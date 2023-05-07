@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Basic from './components/basic';
 
 // Define a function to generate a random number between min (inclusive) and max (inclusive)
 function getRandomNumber(min, max) {
@@ -9,12 +8,12 @@ function getRandomNumber(min, max) {
 
 // Create a new Date object representing today's date
 const today = new Date();
-
+ 
 // Create a new Date object representing one year ago from today
 const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
 
 // Initialize an empty object to store the random numbers for each day of the year
-const commitsPerDate = {};
+var commitsPerDate = [];
 
 function generateFakeCommitData() {
   for (let date = new Date(oneYearAgo); date <= today; date.setDate(date.getDate() + 1)) {
@@ -25,7 +24,7 @@ function generateFakeCommitData() {
     const randomNumber = getRandomNumber(0, 100);
 
     // Add the random number to the object with the date as the key
-    commitsPerDate[dateString] = randomNumber;
+    commitsPerDate.push({date:dateString.split('/').join('-'), count: randomNumber});
   }
 }
 
@@ -35,19 +34,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer" 
-        >
-          Learn React
-        </a>
+        Heatmaps library for React showdown
       </header>
+      <Basic commitsData = { commitsPerDate }></Basic>
     </div>
   );
 }
