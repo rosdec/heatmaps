@@ -1,5 +1,6 @@
 import './App.css';
 import Basic from './components/basic';
+import Heatmap from './components/advanced';
 
 // Define a function to generate a random number between min (inclusive) and max (inclusive)
 function getRandomNumber(min, max) {
@@ -37,6 +38,7 @@ function App() {
         Heatmaps library for React showdown
       </header>
       <Basic commitsData = { commitsPerDate }></Basic>
+      <Heatmap data={[4, 8, 15, 16, 23, 42, 10, 20, 30, 40, 50, 60]} />
     </div>
   );
 }
