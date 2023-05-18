@@ -37,8 +37,8 @@ function App() {
       <header className="App-header">
         Heatmaps library for React showdown
       </header>
-      <Basic commitsData = { commitsPerDate }></Basic>
-      <Heatmap data={[4, 8, 15, 16, 23, 42, 10, 20, 30, 40, 50, 60]} />
+      <Basic commitsData = { commitsPerDate } />
+      <Heatmap data = { commitsPerDate } />
     </div>
   );
 }
