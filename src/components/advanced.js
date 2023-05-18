@@ -35,16 +35,15 @@ const Heatmap = ({ data }) => {
     });
 
     // first, initialize the variables that are independent of the data
-    var margin = { top: 30, right: 10, bottom: 30, left: 30 },
-      width = 1000 - margin.left - margin.right,
-      gridSize = Math.floor(width / 53),
-      height = (gridSize * 10) - margin.top - margin.bottom,
-      // legendElementWidth = gridSize * 3,
+    var margin = { top: 30, right: 10, bottom: 30, left: 30 }
+    var width = 1000 - margin.left - margin.right
+    var gridSize = Math.floor(width / 53)
+    var height = (gridSize * 10) - margin.top - margin.bottom
+    // varlegendElementWidth = gridSize * 3,
 
-      days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-      weeks = ["", "J", "", "", "", "F", "", "", "", "M", "", "", "", "", "A", "", "", "", "M", "", "", "", "J", "", "", "", "", "J", "", "", "", "A", "", "", "", "S", "", "", "", "", "O", "", "", "", "N", "", "", "", "D", "", "", "", ""],
-      // values = ['hike', 'bike', 'swim', 'run', 'stretch', 'climb', 'lift'],
-      colors = ["#D500F9", "#651FFF", "#00B8D4", "#64DD17", "#FFD600", "#FF6D00", "#FF1744"];
+    var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    var weeks = ["", "J", "", "", "", "F", "", "", "", "M", "", "", "", "", "A", "", "", "", "M", "", "", "", "J", "", "", "", "", "J", "", "", "", "A", "", "", "", "S", "", "", "", "", "O", "", "", "", "N", "", "", "", "D", "", "", "", ""]
+
 
     var svg = d3.select(heatmapRef.current).append("svg") // attach chart to the DOM and center it within an svg element based on margins
       .attr("width", width + margin.left + margin.right)
@@ -54,10 +53,10 @@ const Heatmap = ({ data }) => {
 
     var colorScale = d3.scaleLinear()
       .domain([0, 100])
-      .range([ '#EBEDF0', '#7BC96F', '#C6E48B', '#239A3B', '#196127' ]);
+      .range(['#EBEDF0', '#7BC96F', '#C6E48B', '#239A3B', '#196127']);
 
     var colorScale = d3.scaleQuantize()
-      .domain([0, 100]) 
+      .domain([0, 100])
       .range(["white", "pink", "red"])
 
     svg.selectAll(".day") // add day labels
@@ -71,7 +70,7 @@ const Heatmap = ({ data }) => {
       .attr("class", "label");
 
     svg.selectAll(".week") // add week labels
-      .data(weeks)
+      .data(d3.range(values[0].week, values[values.length-1].week))
       .enter().append("text")
       .text(function (d) { return d; })
       .attr("x", function (d, i) { return i * gridSize; })
