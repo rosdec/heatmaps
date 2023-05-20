@@ -9,7 +9,7 @@ function generateFakeCommitData() {
   for (let month = 0; month < 12; month++) {
     // Get the number of days in the current month
     const numberOfDays = new Date(2023, month + 1, 0).getDate();
-
+ 
     // Loop through each day of the current month
     for (let day = 1; day <= numberOfDays; day++) {
       // Create a new Date object for the current day
@@ -32,7 +32,7 @@ function App() {
       <header className="App-header">
         Heatmaps library for React showdown
       </header>
-      <Basic commitsData={commitsPerDate} />
+      <Basic commitsData={commitsPerDate} /> 
       <Advanced commitsData={commitsPerDate} />
     </div>
   );

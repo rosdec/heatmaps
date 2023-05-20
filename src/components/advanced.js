@@ -69,7 +69,7 @@ const Advanced = ({ commitsData }) => {
       .data(d3.range(1, 53))
       .enter().append("text")
       .text(function (d) {
-        if (d % 5 == 0)
+        if (d % 5 === 0)
           return months[d / 5]
         else
           return ""
