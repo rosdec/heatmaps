@@ -15,15 +15,10 @@ function generateFakeCommitData() {
       // Create a new Date object for the current day
       const currentDate = new Date(2023, month, day, 5); // hack: added 5 hours to avoid midnight
 
-      // Generate a random number between 0 and 100
-      const randomNumber = Math.floor(Math.random() * 100);
-
-      console.log(currentDate.toJSON().substring(0, 10))
-
       // Add a new object to the array
       commitsPerDate.push({
         date: currentDate.toJSON().substring(0, 10),
-        count: randomNumber
+        count: Math.floor(Math.random() * 100)
       });
     }
   }
