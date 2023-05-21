@@ -52,33 +52,33 @@ const Advanced = ({ commitsData }) => {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var colorScale = d3.scaleOrdinal() // map array of values to array of colors
-      .domain(values) // move this inside of data callback and change this to newValues if you use option code to generate domain from the data
+      .domain([0, 100]) // move this inside of data callback and change this to newValues if you use option code to generate domain from the data
       .range(colors);
 
-    svg.selectAll(".day") // add day labels
-      .data(days)
-      .enter().append("text")
-      .text(function (d) { return d; })
-      .attr("x", 0)
-      .attr("y", function (d, i) { return i * gridSize; })
-      .style("text-anchor", "end")
-      .attr("transform", "translate(-6," + gridSize / 1.3 + ")")
-      .attr("class", "label");
+svg.selectAll(".day") // add day labels
+  .data(days)
+  .enter().append("text")
+  .text(function (d) { return d; })
+  .attr("x", 0)
+  .attr("y", function (d, i) { return i * gridSize; })
+  .style("text-anchor", "end")
+  .attr("transform", "translate(-6," + gridSize / 1.3 + ")")
+  .attr("class", "label");
 
-    svg.selectAll(".week") // add week labels
-      .data(d3.range(1, 53))
-      .enter().append("text")
-      .text(function (d) {
-        if (d % 5 === 0)
-          return months[d / 5]
-        else
-          return ""
-      })
-      .attr("x", function (d, i) { return i * gridSize; })
-      .attr("y", 0)
-      .style("text-anchor", "middle")
-      .attr("transform", "translate(" + gridSize / 2 + ", -6)")
-      .attr("class", "label");
+svg.selectAll(".week") // add week labels
+  .data(d3.range(1, 53))
+  .enter().append("text")
+  .text(function (d) {
+    if (d % 5 === 0)
+      return months[d / 5]
+    else
+      return ""
+  })
+  .attr("x", function (d, i) { return i * gridSize; })
+  .attr("y", 0)
+  .style("text-anchor", "middle")
+  .attr("transform", "translate(" + gridSize / 2 + ", -6)")
+  .attr("class", "label");
 
     // var newValues = [] // optional code to generate color domain from the data
     // // make an object first
@@ -108,7 +108,7 @@ const Advanced = ({ commitsData }) => {
 
     heatMap.transition().duration(1000) // example d3 animation
       .style("fill", function (d) { return colorScale(d.type); })
-      .style("fill-opacity", "60%");
+
 
     // heatMap.append("title") // append and format title element
     //   .text(function (d) {
@@ -132,7 +132,7 @@ const Advanced = ({ commitsData }) => {
       .style("fill", function (d, i) { 
         return d; 
       }) // map color domain array (d) to color range array
-      .style("fill-opacity", "60%");
+
 
 
     legend.append("text") // add legend text labels to same coordinates as legend rectangles, center
