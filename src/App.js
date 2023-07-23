@@ -1,7 +1,7 @@
 import './App.css';
 import Basic from './components/basic';
 import Advanced from './components/advanced';
-
+import Commercial from './components/commercial'
 // Initialize an empty object to store the random numbers for each day of the year
 var commitsPerDate = [];
 
@@ -33,9 +33,10 @@ function App() {
         Heatmaps library for React showdown
       </header>
       <Basic commitsData={commitsPerDate} /> 
+      <Commercial commitsData={commitsPerDate} />
       <Advanced commitsData={commitsPerDate} />
     </div>
   );
-}
+} 
 
 export default App;

@@ -55,30 +55,30 @@ const Advanced = ({ commitsData }) => {
       .domain([0, 100]) // move this inside of data callback and change this to newValues if you use option code to generate domain from the data
       .range(colors);
 
-svg.selectAll(".day") // add day labels
-  .data(days)
-  .enter().append("text")
-  .text(function (d) { return d; })
-  .attr("x", 0)
-  .attr("y", function (d, i) { return i * gridSize; })
-  .style("text-anchor", "end")
-  .attr("transform", "translate(-6," + gridSize / 1.3 + ")")
-  .attr("class", "label");
+    svg.selectAll(".day") // add day labels
+      .data(days)
+      .enter().append("text")
+      .text(function (d) { return d; })
+      .attr("x", 0)
+      .attr("y", function (d, i) { return i * gridSize; })
+      .style("text-anchor", "end")
+      .attr("transform", "translate(-6," + gridSize / 1.3 + ")")
+      .attr("class", "label");
 
-svg.selectAll(".week") // add week labels
-  .data(d3.range(1, 53))
-  .enter().append("text")
-  .text(function (d) {
-    if (d % 5 === 0)
-      return months[d / 5]
-    else
-      return ""
-  })
-  .attr("x", function (d, i) { return i * gridSize; })
-  .attr("y", 0)
-  .style("text-anchor", "middle")
-  .attr("transform", "translate(" + gridSize / 2 + ", -6)")
-  .attr("class", "label");
+    svg.selectAll(".week") // add week labels
+      .data(d3.range(1, 53))
+      .enter().append("text")
+      .text(function (d) {
+        if (d % 5 === 0)
+          return months[d / 5]
+        else
+          return ""
+      })
+      .attr("x", function (d, i) { return i * gridSize; })
+      .attr("y", 0)
+      .style("text-anchor", "middle")
+      .attr("transform", "translate(" + gridSize / 2 + ", -6)")
+      .attr("class", "label");
 
     // var newValues = [] // optional code to generate color domain from the data
     // // make an object first
@@ -129,8 +129,8 @@ svg.selectAll(".week") // add week labels
       .attr("class", "bordered")
       .attr("rx", 4)
       .attr("ry", 4)
-      .style("fill", function (d, i) { 
-        return d; 
+      .style("fill", function (d, i) {
+        return d;
       }) // map color domain array (d) to color range array
 
 
@@ -144,7 +144,7 @@ svg.selectAll(".week") // add week labels
 
   }, [commitsData]);
 
-  return <div ref={heatmapRef}></div>;
+  return <div id="advanced" ref={heatmapRef}></div>;
 };
 
 export default Advanced;
