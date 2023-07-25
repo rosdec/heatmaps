@@ -5,7 +5,7 @@ const Commercial = ({ commitsData }) => {
     const [values, setValues] = useState([])
 
     const monthsLabels = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
-    const daysLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    const daysLabels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 
     useEffect(() => {
@@ -33,7 +33,6 @@ const Commercial = ({ commitsData }) => {
             showLabelOn: 'Months',
             labelFormat: 'MMM',
             increment: 7,
-            labelIntersectAction: 'Rotate45'
         }}
         yAxis={{
             labels: daysLabels,
